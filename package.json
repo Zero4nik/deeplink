@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
+    "build:prod": "tsc --project tsconfig.prod.json",
     "prepare": "node -e \"if (process.env.NODE_ENV !== 'production') { process.exit(1) }\" || husky install",
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
