@@ -10,7 +10,7 @@
     "prepare": "node -e \"if (process.env.NODE_ENV !== 'production') { process.exit(1) }\" || husky install",
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.ts",
+    "start": "node dist/server.js",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write src"
   },
@@ -60,4 +60,5 @@
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
+  
 }
