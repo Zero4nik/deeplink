@@ -2,10 +2,10 @@ import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import app from './app';
-import { initTo } from './socket';
+import { initIo } from './socket';
 
 const server = http.createServer(app);
-const io = initTo(server)
+const io = initIo(server)
 
 io.on('connection', (socket) => {
   console.log(' Client connected:', socket.id);

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: deeplink
+    runtime: node
+    buildCommand: |
+      npm install --include=dev
+      npx prisma generate
+      npx prisma migrate deploy
+      npm run build -- --project tsconfig.prod.json   
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: deeplink-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
