@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(cuid())
+  username String @unique
+  email String @unique
+  passwordHash String
+  displayName String?
+  avatarUrl String?
+  createdAt DateTime @default(now())
+
+  posts Post[]
+  followers Follow[] @relation("follower")
+  following Follow[] @relation("followee")
+  likes Like[]
+}
+
+model Post{
+ id String @id @default(cuid())   
+ content String
+ authorId String
+ Author User @relation(fields: [authorId],references: [id],onDelete: Cascade)
+ likeCount Int @default(0)
+ createdAt DateTime @default(now())
+
+ likes Like[]
+
+ @@index([authorId])
+ @@index([createdAt])
+}
+model Follow{
+  id String @id @default(cuid())
+  followerId String
+  follower User @relation("follower", fields: [followerId], references: [id],onDelete: Cascade)
+  followeeId String
+  followee User @relation("followee", fields: [followeeId], references: [id],onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([followeeId,followerId])
+  @@index([followeeId])
+  @@index([followerId])
+}
+model Like{
+  id String @id @default(cuid())  
+  userId String
+  User User @relation(fields: [userId],references: [id],onDelete: Cascade)
+  postId String
+  post Post @relation(fields: [postId],references: [id],onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId,postId])
+  @@index([postId])
+}
