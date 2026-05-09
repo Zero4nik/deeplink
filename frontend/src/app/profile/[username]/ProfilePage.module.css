@@ -1,0 +1,119 @@
+.profile {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.header {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.username {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .profile {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  .username {
+    font-size: 20px;
+  }
+
+  .stats {
+    gap: 16px;
+  }
+
+  .statValue {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile {
+    padding: 8px;
+  }
+
+  .header {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .username {
+    font-size: 18px;
+  }
+
+  .stats {
+    gap: 12px;
+  }
+
+  .statValue {
+    font-size: 15px;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .empty {
+    padding: 24px 12px;
+    font-size: 14px;
+  }
+}

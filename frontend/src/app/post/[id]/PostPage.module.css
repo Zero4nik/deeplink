@@ -1,0 +1,47 @@
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.commentSection {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.commentTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .page {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .commentSection {
+    padding: 16px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 8px;
+  }
+
+  .commentSection {
+    padding: 12px;
+    margin-top: 12px;
+  }
+
+  .commentTitle {
+    font-size: 14px;
+  }
+}

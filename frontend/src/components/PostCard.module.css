@@ -1,0 +1,81 @@
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #ffffff;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 2px 8px rgba(26, 86, 219, 0.08);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.username {
+  font-weight: 600;
+  color: #1a1a2e;
+  text-decoration: none;
+}
+
+.username:hover {
+  text-decoration: underline;
+  color: #1a56db;
+}
+
+.date {
+  color: #6b7280;
+  font-size: 14px;
+  margin-left: auto;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #1a1a2e;
+}
+
+.contentLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.contentLink:hover .content {
+  color: #4b5563;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f2f5;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .header {
+    gap: 8px;
+  }
+
+  .content {
+    font-size: 14px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+}
