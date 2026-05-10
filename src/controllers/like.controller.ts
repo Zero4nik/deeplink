@@ -11,7 +11,7 @@ export const likeController = {
         const {postId} = req.params
 
         const result = await likeService.toggleLike(userId,String(postId))
-
+            console.log('likeController.toggle вызван, postId:', req.params.postId);
         res.json(result)
         }catch(error){
             handleError(error,res)

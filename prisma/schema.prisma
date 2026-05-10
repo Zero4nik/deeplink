@@ -7,33 +7,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id String @id @default(cuid())
-  username String @unique
-  email String @unique
-  passwordHash String
-  displayName String?
-  avatarUrl String?
+model Post {
+  id        String   @id @default(cuid())
+  content   String
+  authorId  String
+  Author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  likeCount Int      @default(0)
   createdAt DateTime @default(now())
 
-  posts Post[]
-  followers Follow[] @relation("follower")
-  following Follow[] @relation("followee")
-  likes Like[]
+  likes    Like[]
+  comments Comment[]
+
+  @@index([authorId])
+  @@index([createdAt])
 }
 
-model Post{
- id String @id @default(cuid())   
- content String
- authorId String
- Author User @relation(fields: [authorId],references: [id],onDelete: Cascade)
- likeCount Int @default(0)
- createdAt DateTime @default(now())
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  email        String   @unique
+  passwordHash String
+  displayName  String?
+  avatarUrl    String?
+  createdAt    DateTime @default(now())
 
- likes Like[]
-
- @@index([authorId])
- @@index([createdAt])
+  posts     Post[]
+  followers Follow[] @relation("follower")
+  following Follow[] @relation("followee")
+  likes     Like[]
+  comments  Comment[]
 }
 model Follow{
   id String @id @default(cuid())
@@ -57,4 +59,13 @@ model Like{
 
   @@unique([userId,postId])
   @@index([postId])
+}
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  postId    String
+  authorId  String
+  post      Post     @relation(fields: [postId], references: [id])
+  Author    User     @relation(fields: [authorId], references: [id])
 }

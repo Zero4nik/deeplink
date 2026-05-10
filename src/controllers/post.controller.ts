@@ -28,11 +28,11 @@ export const postController = {
   async getPost(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    console.log('🔵 GET POST ID:', id); // 👈 ДОБАВЬ
+
     const post = await postServices.getPost(String(id));
     res.json(post);
   } catch (error) {
-    console.log('🔵 GET POST ERROR:', error); // 👈 ДОБАВЬ
+
     handleError(error, res);
   }
 },
@@ -77,11 +77,42 @@ async getFeed(req: Request, res: Response) {
     const cursor = req.query.cursor as string | undefined;
     
     const result = await postServices.getFeed(userId, limit, cursor);
-    console.log('CONTROLLER getFeed result:', JSON.stringify(result, null, 2)); // 👈 ДОБАВЬ
+
     
     res.json(result);
   } catch (error) {
     handleError(error, res);
+  }
+},
+async getAll(req: Request, res: Response) {
+  try {
+    const posts = await postServices.getAllPosts();
+    res.json({ posts });
+  } catch (error) {
+    res.status(500).json({ message: 'Ошибка при загрузке постов' });
+  }
+},
+async getComments(req: Request, res: Response) {
+  try {
+    console.log('getComments вызван, id:', req.params.id);
+    const comments = await postServices.getComments(String(req.params.id));
+    res.json({ comments });
+  } catch (error) {
+    console.error('Ошибка в getComments:', error);
+    res.status(500).json({ message: 'Ошибка при загрузке комментариев' });
+  }
+},
+
+async createComment(req: Request, res: Response) {
+  try {
+    const comment = await postServices.createComment(
+      String(req.params.id),
+      String(req.user?.id),
+      String(req.body.content)
+    );
+    res.status(201).json({ comment });
+  } catch (error) {
+    res.status(500).json({ message: 'Ошибка при создании комментария' });
   }
 }
 };

@@ -4,8 +4,13 @@ import { Server } from 'socket.io';
 import app from './app';
 import { initIo } from './socket';
 
+
 const server = http.createServer(app);
 const io = initIo(server)
+
+
+
+
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });

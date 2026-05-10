@@ -8,8 +8,15 @@ export const postRepository = {
         
     },
     async findById(id:string):Promise<Post | null>{
-        return prisma.post.findUnique({where: {id}})
-    },
+    return prisma.post.findUnique({
+        where: {id},
+        include: {
+            Author: {
+                select: { id: true, username: true }
+            }
+        }
+    })
+},
     async incrementLikes(postId: string) {
   return prisma.post.update({
     where: { id: postId },
@@ -50,7 +57,15 @@ async getLikeCount(postId: string): Promise<number> {
     },
     async findAll() {
     return prisma.post.findMany({
-    orderBy: { createdAt: 'desc' }
+    orderBy: { createdAt: 'desc' },
+    include: {
+      Author: {
+        select: {
+          id: true,
+          username: true,
+        },
+      },
+    },
     });
 },
 async getFeed(userId: string, limit: number, cursor?: string) {
@@ -87,5 +102,23 @@ async getUserPosts(authorId: string, limit: number, cursor?: string) {
   const hasMore = posts.length === limit;
   const nextCursor = hasMore ? posts[posts.length - 1].id : undefined;
   return { posts, nextCursor, hasMore };
-}
+},
+async getComments(postId: string) {
+  return prisma.comment.findMany({
+    where: { postId },
+    orderBy: { createdAt: 'asc' },
+    include: {
+      Author: { select: { id: true, username: true } },
+    }
+  });
+},
+
+async createComment(postId: string, authorId: string, content: string) {
+  return prisma.comment.create({
+    data: { content, postId, authorId },
+    include: {
+      Author: { select: { id: true, username: true } },
+    }
+  });
+},
 }

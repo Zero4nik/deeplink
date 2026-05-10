@@ -2,26 +2,28 @@ import { Router } from "express";
 import { postController } from "../controllers/post.controller";
 import { authMiddleware } from "../middlewares/auth.middleware";
 import { likeController } from "../controllers/like.controller";
-import { followController } from "../controllers/follow.controller";
+
 
 const router = Router();
 
 router.use(authMiddleware);
 
+// Лайки 
+router.post('/:postId/like', likeController.toggle);
+
 // Посты
 router.post('/', postController.create);
-router.get('/feed', postController.getFeed);          
-router.get('/user/:userId', postController.getUserPosts); 
-router.get('/:id', postController.getPost);            
+router.get('/feed', postController.getFeed);
+router.get('/all', postController.getAll);
+router.get('/user/:userId', postController.getUserPosts);
+router.get('/:id/comments', postController.getComments);
+router.post('/:id/comments', postController.createComment);
+router.get('/:id', postController.getPost);
 router.put('/:id', postController.update);
 router.delete('/:id', postController.delete);
 
-// Лайки
-router.post('/:postId/like', likeController.toggle);
+router.delete('/:postId/like', likeController.toggle);
 
-// Подписки
-router.get('/:userId/followers', followController.getFollower);
-router.get('/:userId/following', followController.getFollowee);
-router.post('/:followeeId/follow', followController.toggle);
+
 
 export default router;

@@ -29,9 +29,9 @@ export const postServices = {
     return result;
   },
 async getPost(id: string) {
-  console.log('🔵 SERVICE GET POST ID:', id); // 👈 ДОБАВЬ
+
   const post = await postRepository.findById(id);
-  console.log('🔵 SERVICE GET POST RESULT:', post); // 👈 ДОБАВЬ
+
   if (!post) throw new Error('Post not found');
   return post;
 },
@@ -71,6 +71,13 @@ async deletePost(id: string, userId: string) {
 async getAllPosts() {
     return postRepository.findAll();
   },
+  async getComments(postId: string) {
+  return await postRepository.getComments(postId);
+},
 
+async createComment(postId: string, authorId: string, content: string) {
+  if (!content?.trim()) throw new Error('Content is required');
+  return await postRepository.createComment(postId, authorId, content);
+}
   
 }
