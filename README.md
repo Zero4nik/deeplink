@@ -2,7 +2,7 @@
 ![Status](https://img.shields.io/badge/status-production-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-# Deeplink — Социальная сеть для разработчиков
+# Deeplink - Социальная сеть для разработчиков
 
 **🟢 Живое демо:** [deeplink-ivory-rho.vercel.app](https://deeplink-ivory-rho.vercel.app)  
 **🔵 API:** [deeplink-zm8f.onrender.com](https://deeplink-zm8f.onrender.com)
@@ -54,23 +54,40 @@ TypeScript · Next.js 16 (App Router) · React 19 · Axios · CSS Modules · Fra
 
 ## 🧱 Архитектура
 
-deeplink/
+eeplink/
 ├── src/ # Бэкенд
-│ ├── controllers/ # Обработка HTTP-запросов
-│ ├── services/ # Бизнес-логика
-│ ├── repositories/ # Доступ к данным (Prisma)
-│ ├── routes/ # Маршруты API
-│ ├── middleware/ # JWT, обработка ошибок
-│ └── lib/ # Prisma, Redis, Socket.IO
+│ ├── controllers/ # HTTP-слой: принимает запросы, отдаёт ответы
+│ ├── services/ # Бизнес-логика: правила, проверки, трансформации
+│ ├── repositories/ # Доступ к данным: только Prisma-запросы
+│ ├── routes/ # Маршруты API: связывает URL с контроллерами
+│ ├── middleware/ # JWT-проверка, обработка ошибок
+│ └── lib/ # Prisma Client, Redis, Socket.IO
 ├── frontend/ # Фронтенд
 │ └── src/
-│ ├── app/ # Страницы (App Router)
+│ ├── app/ # Страницы Next.js (App Router)
+│ │ ├── feed/ # Лента подписок
+│ │ ├── login/ # Вход
+│ │ ├── register/ # Регистрация
+│ │ ├── post/[id]/ # Страница поста с комментариями
+│ │ ├── profile/[username]/ # Профиль пользователя
+│ │ ├── layout.tsx # Корневой layout с Navbar и AuthProvider
+│ │ └── page.tsx # Главная с глобальной лентой
 │ ├── components/ # Переиспользуемые компоненты
-│ ├── context/ # AuthContext
-│ └── lib/ # API-клиент (Axios)
+│ │ ├── Navbar.tsx # Навигация
+│ │ ├── PostCard.tsx # Карточка поста
+│ │ ├── LikeButton.tsx # Кнопка лайка
+│ │ ├── FollowButton.tsx # Кнопка подписки
+│ │ ├── CreatePostForm.tsx # Форма создания поста
+│ │ ├── CommentForm.tsx # Форма комментария
+│ │ └── CommentList.tsx # Список комментариев
+│ ├── context/ # AuthContext: user, token, login, register, logout
+│ └── lib/ # Axios-клиент с JWT-интерсептором
+├── prisma/ # Схема БД и миграции
+│ └── schema.prisma # Модели: User, Post, Like, Follow, Comment
 ├── docker-compose.yml # PostgreSQL + Redis
-├── .github/workflows/ # CI/CD
-└── LOG.md # Дневник разработки
+├── .github/workflows/ci.yml # CI/CD: типы, тесты, деплой
+├── LOG.md # Дневник разработки (25 дней)
+└── README.md # Вы здесь
 
 
 Запрос проходит через слои:  
