@@ -1,4 +1,4 @@
-<img width="1280" height="635" alt="post" src="https://github.com/user-attachments/assets/befcdee1-c62a-4613-8063-cb010b453545" />![CI](https://github.com/Zero4nik/deeplink/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Zero4nik/deeplink/actions/workflows/ci.yml/badge.svg)
 
 # Deeplink — Социальная сеть для разработчиков
 
@@ -15,18 +15,18 @@
 
 ## 📸 Скриншоты
 
-*Все скриншоты лежат в папке `screenshots/`. Если у вас есть гифки, добавьте их тем же путём.*
+*Все скриншоты лежат в папке `screenshots/`.
 
 | Лента | Пост с комментариями | Профиль |
 |-------|----------------------|---------|
-| ![Лента](<img width="1280" height="635" alt="post" src="https://github.com/user-attachments/assets/e277b8f9-92fd-4320-8150-f4050197d529" />
-) | ![Пост](screenshots/post.png) | ![Профиль](screenshots/profile.png) |
+| ![Лента]<img width="600" height="800" alt="post" src="https://github.com/user-attachments/assets/c6418082-2f1a-49f9-8880-5168636674cf" />
+ | ![Пост](screenshots/post.png) | ![Профиль](screenshots/profile.png) |
 
 | Вход | Регистрация | Мобильная версия |
 |------|------------|------------------|
 | ![Вход](screenshots/login.png) | ![Регистрация](screenshots/register.png) | ![Мобильная](screenshots/mobile.png) |
 
-*(Подставьте свои реальные скриншоты и названия файлов. При необходимости замените `.png` на `.jpg` или `.gif`.)*
+
 
 ---
 
@@ -60,4 +60,5 @@ TypeScript · Next.js 16 (App Router) · React 19 · Axios · CSS Modules · Fra
 ---
 
 ## 🧱 Архитектура
+ 
 
