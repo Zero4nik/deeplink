@@ -163,7 +163,7 @@ GitHub Actions при пуше в main: проверка типов → мигр
 
 Тимур — Fullstack Developer (Junior+)
 
-https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white
-https://img.shields.io/badge/-Telegram-26A5E4?logo=telegram&logoColor=white
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/Zero4nik)
+[![Telegram](https://img.shields.io/badge/-Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/Msmink9191)
  
 
