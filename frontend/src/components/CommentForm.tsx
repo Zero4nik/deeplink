@@ -16,7 +16,7 @@ export default function CommentForm({postId,addComments}:{postId:string,addComme
         setError('')
 
         try{
-            await api.post(`/posts/${postId}/comment`,{content})
+            await api.post(`/posts/${postId}/comments`,{content})
             setContent('')
             addComments()
         }catch(error){
