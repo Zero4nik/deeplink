@@ -1,4 +1,4 @@
-![CI](https://github.com/Zero4nik/deeplink/actions/workflows/ci.yml/badge.svg)
+<img width="1280" height="635" alt="post" src="https://github.com/user-attachments/assets/befcdee1-c62a-4613-8063-cb010b453545" />![CI](https://github.com/Zero4nik/deeplink/actions/workflows/ci.yml/badge.svg)
 
 # Deeplink — Социальная сеть для разработчиков
 
@@ -19,7 +19,8 @@
 
 | Лента | Пост с комментариями | Профиль |
 |-------|----------------------|---------|
-| ![Лента](screenshots/feed.png) | ![Пост](screenshots/post.png) | ![Профиль](screenshots/profile.png) |
+| ![Лента](<img width="1280" height="635" alt="post" src="https://github.com/user-attachments/assets/e277b8f9-92fd-4320-8150-f4050197d529" />
+) | ![Пост](screenshots/post.png) | ![Профиль](screenshots/profile.png) |
 
 | Вход | Регистрация | Мобильная версия |
 |------|------------|------------------|
