@@ -19,7 +19,7 @@
 
 | Лента | Пост с комментариями | Профиль |
 |-------|----------------------|---------|
-| ![Лента]<img width="800" height="600" alt="post" src="https://github.com/user-attachments/assets/c6418082-2f1a-49f9-8880-5168636674cf" />
+| ![Лента]<img width="600" alt="post" src="https://github.com/user-attachments/assets/c6418082-2f1a-49f9-8880-5168636674cf" />
  | ![Пост](screenshots/post.png) | ![Профиль](screenshots/profile.png) |
 
 | Вход | Регистрация | Мобильная версия |
