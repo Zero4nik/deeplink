@@ -20,11 +20,16 @@
 | Лента | Пост с комментариями | Профиль |
 |-------|----------------------|---------|
 | ![Лента]<img width="600" alt="post" src="https://github.com/user-attachments/assets/c6418082-2f1a-49f9-8880-5168636674cf" />
- | ![Пост](screenshots/post.png) | ![Профиль](screenshots/profile.png) |
+ | ![Пост]<img width="600" alt="comment" src="https://github.com/user-attachments/assets/22ac1ad2-2579-4a50-8e9c-23efd56e1690" />
+ | ![Профиль]<img width="600" alt="profile" src="https://github.com/user-attachments/assets/54fb396e-f870-4e8b-9eac-4eb2c8aba871" />
+ |
 
 | Вход | Регистрация | Мобильная версия |
 |------|------------|------------------|
-| ![Вход](screenshots/login.png) | ![Регистрация](screenshots/register.png) | ![Мобильная](screenshots/mobile.png) |
+| ![Вход]<img width="600" alt="login" src="https://github.com/user-attachments/assets/3a4335aa-2f30-4e91-a373-aa069bb2a801" />
+ | ![Регистрация]<img width="600" alt="register" src="https://github.com/user-attachments/assets/f0ac4053-a298-42dd-8d1b-af9e4de05993" />
+ | ![Мобильная]<img width="361" height="954" alt="loginMobile" src="https://github.com/user-attachments/assets/658b38a0-b9f8-430e-a278-c701b0f02528" />
+ |
 
 
 
