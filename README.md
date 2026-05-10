@@ -7,7 +7,7 @@
 **🟢 Живое демо:** [deeplink-ivory-rho.vercel.app](https://deeplink-ivory-rho.vercel.app)  
 **🔵 API:** [deeplink-zm8f.onrender.com](https://deeplink-zm8f.onrender.com)
 
-**Это не «тудулист на React». Это архитектурно зрелый fullstack-продукт, доведённый до продакшена.** Регистрация, лента постов с пагинацией, лайки с оптимистичным обновлением, подписки, комментарии, профили со счётчиками и уведомления в реальном времени через WebSocket. Тёмная тема, стеклянные карточки, CI/CD, деплой на Render и Vercel. 25 дней от идеи до продакшена.
+**. Это архитектурно зрелый fullstack-продукт, доведённый до продакшена.** Регистрация, лента постов с пагинацией, лайки с оптимистичным обновлением, подписки, комментарии, профили со счётчиками и уведомления в реальном времени через WebSocket. Тёмная тема, стеклянные карточки, CI/CD, деплой на Render и Vercel. 25 дней от идеи до продакшена.
 
 ---
 
@@ -54,5 +54,97 @@ TypeScript · Next.js 16 (App Router) · React 19 · Axios · CSS Modules · Fra
 
 ## 🧱 Архитектура
 
+deeplink/
+├── src/ # Бэкенд
+│ ├── controllers/ # Обработка HTTP-запросов
+│ ├── services/ # Бизнес-логика
+│ ├── repositories/ # Доступ к данным (Prisma)
+│ ├── routes/ # Маршруты API
+│ ├── middleware/ # JWT, обработка ошибок
+│ └── lib/ # Prisma, Redis, Socket.IO
+├── frontend/ # Фронтенд
+│ └── src/
+│ ├── app/ # Страницы (App Router)
+│ ├── components/ # Переиспользуемые компоненты
+│ ├── context/ # AuthContext
+│ └── lib/ # API-клиент (Axios)
+├── docker-compose.yml # PostgreSQL + Redis
+├── .github/workflows/ # CI/CD
+└── LOG.md # Дневник разработки
+
+
+Запрос проходит через слои:  
+**Routes → Controllers → Services → Repositories → Prisma → База данных**.  
+Каждый слой отвечает только за свою задачу.
+
+---
+
+## 📡 API Endpoints
+
+### Аутентификация
+| Метод | URL | Описание |
+|-------|-----|----------|
+| POST | `/api/auth/register` | Регистрация |
+| POST | `/api/auth/login` | Вход |
+
+### Посты
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/api/posts/all` | Все посты |
+| GET | `/api/posts/feed` | Лента подписок |
+| GET | `/api/posts/:id` | Пост по ID |
+| POST | `/api/posts` | Создать пост |
+| PUT | `/api/posts/:id` | Обновить пост |
+| DELETE | `/api/posts/:id` | Удалить пост |
+
+### Лайки и подписки
+| Метод | URL | Описание |
+|-------|-----|----------|
+| POST | `/api/posts/:postId/like` | Поставить лайк |
+| DELETE | `/api/posts/:postId/like` | Убрать лайк |
+| POST | `/api/users/:followeeId/follow` | Подписаться |
+| DELETE | `/api/users/:followeeId/follow` | Отписаться |
+
+### Пользователи и комментарии
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/api/users/:username` | Профиль |
+| GET | `/api/posts/:id/comments` | Комментарии |
+| POST | `/api/posts/:id/comments` | Добавить комментарий |
+
+---
+
+## 🧪 Тестирование
+
+```bash
+# Бэкенд (Jest + Supertest)
+npm test
+
+# Фронтенд (Vitest + React Testing Library)
+cd frontend && npm test
+
+git clone https://github.com/Zero4nik/deeplink.git && cd deeplink
+docker compose up -d db redis
+npm install && npx prisma generate && npx prisma migrate deploy && npm run dev
+# Бэкенд: http://localhost:3001
+
+cd frontend && npm install && npm run dev
+# Фронтенд: http://localhost:3000
+```
+
+## 🤖 CI/CD
+
+GitHub Actions при пуше в main: проверка типов → миграции → тесты → автодеплой на Render (бэкенд) и Vercel (фронтенд).
+
+## 📖 Дневник разработки
+
+Подробная хронология 25 дней: LOG.md
+
+## 🤝 Контакты
+
+Тимур — Fullstack Developer (Junior+)
+
+https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white
+https://img.shields.io/badge/-Telegram-26A5E4?logo=telegram&logoColor=white
  
 
