@@ -52,47 +52,49 @@ TypeScript · Next.js 16 (App Router) · React 19 · Axios · CSS Modules · Fra
 
 ---
 
+
 ## 🧱 Архитектура
 
-eeplink/
-├── src/ # Бэкенд
-│ ├── controllers/ # HTTP-слой: принимает запросы, отдаёт ответы
-│ ├── services/ # Бизнес-логика: правила, проверки, трансформации
-│ ├── repositories/ # Доступ к данным: только Prisma-запросы
-│ ├── routes/ # Маршруты API: связывает URL с контроллерами
-│ ├── middleware/ # JWT-проверка, обработка ошибок
-│ └── lib/ # Prisma Client, Redis, Socket.IO
-├── frontend/ # Фронтенд
-│ └── src/
-│ ├── app/ # Страницы Next.js (App Router)
-│ │ ├── feed/ # Лента подписок
-│ │ ├── login/ # Вход
-│ │ ├── register/ # Регистрация
-│ │ ├── post/[id]/ # Страница поста с комментариями
-│ │ ├── profile/[username]/ # Профиль пользователя
-│ │ ├── layout.tsx # Корневой layout с Navbar и AuthProvider
-│ │ └── page.tsx # Главная с глобальной лентой
-│ ├── components/ # Переиспользуемые компоненты
-│ │ ├── Navbar.tsx # Навигация
-│ │ ├── PostCard.tsx # Карточка поста
-│ │ ├── LikeButton.tsx # Кнопка лайка
-│ │ ├── FollowButton.tsx # Кнопка подписки
-│ │ ├── CreatePostForm.tsx # Форма создания поста
-│ │ ├── CommentForm.tsx # Форма комментария
-│ │ └── CommentList.tsx # Список комментариев
-│ ├── context/ # AuthContext: user, token, login, register, logout
-│ └── lib/ # Axios-клиент с JWT-интерсептором
-├── prisma/ # Схема БД и миграции
-│ └── schema.prisma # Модели: User, Post, Like, Follow, Comment
-├── docker-compose.yml # PostgreSQL + Redis
-├── .github/workflows/ci.yml # CI/CD: типы, тесты, деплой
-├── LOG.md # Дневник разработки (25 дней)
-└── README.md # Вы здесь
+```
+deeplink/
+├── src/                          # Бэкенд
+│   ├── controllers/              # HTTP-слой
+│   ├── services/                 # Бизнес-логика
+│   ├── repositories/             # Доступ к данным (Prisma)
+│   ├── routes/                   # Маршруты API
+│   ├── middleware/                # JWT, обработка ошибок
+│   └── lib/                      # Prisma, Redis, Socket.IO
+├── frontend/                     # Фронтенд
+│   └── src/
+│       ├── app/                  # Страницы (App Router)
+│       │   ├── feed/             # Лента подписок
+│       │   ├── login/            # Вход
+│       │   ├── register/         # Регистрация
+│       │   ├── post/[id]/        # Пост + комментарии
+│       │   └── profile/[username]/ # Профиль
+│       ├── components/           # UI-компоненты
+│       ├── context/              # AuthContext
+│       └── lib/                  # Axios-клиент
+├── prisma/                       # Схема БД и миграции
+├── docker-compose.yml            # PostgreSQL + Redis
+├── .github/workflows/ci.yml      # CI/CD
+└── LOG.md                        # Дневник разработки
+```
+
+**Как ходит запрос (пример: создание поста)**
+1. `POST /api/posts` → `post.routes.ts`
+2. `authMiddleware` проверяет JWT
+3. `postController.create` достаёт `content`
+4. `postService.create` проверяет, инвалидирует кэш Redis
+5. `postRepository.create` → `prisma.post.create`
+6. Prisma → SQL → PostgreSQL
+7. Ответ поднимается обратно: JSON клиенту
+
+```
+SQL → Prisma → Repository → Service → Controller → Route → JSON
+```
 
 
-Запрос проходит через слои:  
-**Routes → Controllers → Services → Repositories → Prisma → База данных**.  
-Каждый слой отвечает только за свою задачу.
 
 ---
 
