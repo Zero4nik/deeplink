@@ -36,9 +36,13 @@ export default function Home() {
         }
     }
 useEffect(() => {
-    
-    fetchAllPost()
-},[])
+    const token = localStorage.getItem('token');
+    if (token) {
+        fetchAllPost();
+    } else {
+        setLoading(false);
+    }
+}, []);
 
 if(loading) return <p>Загрузка...</p>
 if(error) return <p style={{color:'red'}}>{error}</p>
@@ -56,15 +60,15 @@ return(
                 {post.length === 0 ? (
                     <p>Постов пока нету</p>
                 ) : (
-                    post.map((p) => (
+                    post.map((post) => (
                         <motion.div
-                            key={p.id}
+                            key={post.id}
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <PostCard post={p} />
+                            <PostCard post={post} />
                         </motion.div>
                     ))
                 )}

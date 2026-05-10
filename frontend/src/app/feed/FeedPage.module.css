@@ -7,16 +7,16 @@
 .title {
   font-size: 22px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #F1F5F9;
   margin-bottom: 16px;
 }
 
 .empty {
   text-align: center;
-  color: #6b7280;
+  color: #94A3B8;
   padding: 40px 16px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: #1E293B;
+  border: 1px solid #334155;
   border-radius: 8px;
 }
 

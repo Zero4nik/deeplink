@@ -24,7 +24,7 @@ export default function LikedBtn({postId, postIsLiked, LikedIsCount}: likedButto
         const previousCount = isLikedCount
 
         setIsLiked(!isLiked)
-        setIsLikedCount(isLiked ? LikedIsCount - 1 : LikedIsCount + 1)
+        setIsLikedCount(isLiked ? previousCount - 1 : previousCount + 1)
         
         try {
             if (previousLiked) {

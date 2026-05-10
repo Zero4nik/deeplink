@@ -21,38 +21,51 @@ interface AuthContextType  {
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({children} : {children:ReactNode}){
-    const [user,setUser] = useState<User | null>(null)
-    const [token,setToken] = useState<string | null>(() => {
-        if(typeof window !== 'undefined'){
-            return localStorage.getItem('token')
-        }
-        return null
-    })
+        const [user, setUser] = useState<User | null>(() => {
+    if (typeof window !== 'undefined') {
+        const savedUser = localStorage.getItem('user');
+        return savedUser ? JSON.parse(savedUser) : null;
+    }
+    return null;
+    });
+
+    const [token, setToken] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+        return localStorage.getItem('token');
+    }
+    return null;
+    });
+
     const [loading,setLoading] = useState(true)
     
-    const register = useCallback(async(email:string,password:string,username:string) => {
-        setLoading(true)
-        const response = await api.post('/auth/register', {email,password,username})
-        const { token: newToken, user: newUser } = response.data;
+        const login = useCallback(async (email: string, password: string) => {
+    setLoading(true);
+    const response = await api.post('/auth/login', { email, password });
+    const { token: newToken, user: newUser } = response.data;
     localStorage.setItem('token', newToken);
+    localStorage.setItem('user', JSON.stringify(newUser));
     setToken(newToken);
     setUser(newUser);
     setLoading(false);
-    },[])
-    const login = useCallback(async(email:string,password:string) => {
-        setLoading(true)
-        const response = await api.post('/auth/login', {email,password,})
-        const { token: newToken, user: newUser } = response.data;
+    }, []);
+
+    const register = useCallback(async (email: string, password: string, username: string) => {
+    setLoading(true);
+    const response = await api.post('/auth/register', { email, password, username });
+    const { token: newToken, user: newUser } = response.data;
     localStorage.setItem('token', newToken);
+    localStorage.setItem('user', JSON.stringify(newUser));
     setToken(newToken);
     setUser(newUser);
     setLoading(false);
-    },[])
-    const logout = useCallback( () => {
-        localStorage.removeItem('token')
+    }, []);
+
+    const logout = useCallback(() => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     setToken(null);
     setUser(null);
-    },[])
+    }, []);
 
      return (
     <AuthContext.Provider value={{ user, token, login, register, logout, loading }}>

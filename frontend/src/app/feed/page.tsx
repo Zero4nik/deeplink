@@ -28,8 +28,8 @@ export default function FeedPage() {
 
     const fetchFeed = async () => {
         try {
-            const response = await api.get('/posts/feed');
-            setPost(response.data.data || []);
+        const response = await api.get('/posts/all');
+        setPost(response.data.posts || []);
         } catch (error) {
             setError('Не удалось загрузить ленту');
         } finally {

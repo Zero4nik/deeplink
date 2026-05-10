@@ -1,14 +1,17 @@
 .card {
-  border: 1px solid #e5e7eb;
+
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
-  background: #ffffff;
-  transition: box-shadow 0.2s;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  transition: all 0.2s;
 }
 
 .card:hover {
-  box-shadow: 0 2px 8px rgba(26, 86, 219, 0.08);
+  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.15);
+  border-color: #1A56DB;
 }
 
 .header {
@@ -21,17 +24,17 @@
 
 .username {
   font-weight: 600;
-  color: #1a1a2e;
+  color: #F1F5F9;
   text-decoration: none;
 }
 
 .username:hover {
-  text-decoration: underline;
-  color: #1a56db;
+  color: #14B8A6;
+  text-decoration: none;
 }
 
 .date {
-  color: #6b7280;
+  color: #64748B;
   font-size: 14px;
   margin-left: auto;
 }
@@ -40,7 +43,7 @@
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 12px;
-  color: #1a1a2e;
+  color: #E2E8F0;
 }
 
 .contentLink {
@@ -50,7 +53,7 @@
 }
 
 .contentLink:hover .content {
-  color: #4b5563;
+  color: #F1F5F9;
 }
 
 .actions {
@@ -58,7 +61,7 @@
   align-items: center;
   gap: 16px;
   padding-top: 8px;
-  border-top: 1px solid #f0f2f5;
+  border-top: 1px solid #334155;
 }
 
 @media (max-width: 480px) {

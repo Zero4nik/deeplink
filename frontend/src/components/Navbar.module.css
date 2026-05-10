@@ -3,74 +3,77 @@
   align-items: center;
   gap: 16px;
   padding: 12px 20px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  background: #1A2332;
+  border-bottom: 1px solid #334155;
   margin-bottom: 20px;
 }
 
 .logo {
   font-weight: 700;
   font-size: 18px;
-  color: #1a56db;
+  color: #1A56DB;
   text-decoration: none;
   margin-right: auto;
+  transition: color 0.2s;
 }
 
 .logo:hover {
+  color: #14B8A6;
   text-decoration: none;
-  color: #0e3fa6;
 }
 
 .link {
-  color: #6b7280;
+  color: #94A3B8;
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s;
 }
 
 .link:hover {
-  color: #1a56db;
+  color: #14B8A6;
   text-decoration: none;
 }
 
 .createBtn {
-  background: #1a56db;
-  color: #ffffff;
+  background: #1A56DB;
+  color: #F1F5F9;
   border: none;
-  padding: 6px 14px;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .createBtn:hover {
-  background: #0e3fa6;
+  background: #0E3FA6;
+  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+  transform: translateY(-1px);
   text-decoration: none;
 }
 
 .username {
   font-weight: 600;
-  color: #1a1a2e;
+  color: #F1F5F9;
   font-size: 14px;
 }
 
 .logoutBtn {
-  background: none;
-  border: 1px solid #e5e7eb;
-  padding: 6px 14px;
-  border-radius: 6px;
+  background: transparent;
+  border: 1px solid #334155;
+  padding: 8px 16px;
+  border-radius: 8px;
   font-size: 14px;
-  color: #6b7280;
+  color: #94A3B8;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .logoutBtn:hover {
-  color: #dc2626;
-  border-color: #dc2626;
-  background: #fef2f2;
+  color: #FCA5A5;
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.1);
 }
 
 @media (max-width: 480px) {

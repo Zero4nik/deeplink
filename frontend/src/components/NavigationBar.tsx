@@ -13,8 +13,7 @@ export default function Navbar() {
 
             {user ? (
                 <>
-                    <Link href="/feed?create=true" className={styles.createBtn}>+ Новый пост</Link>
-                    <Link href='/feed' className={styles.link}>Посты</Link>
+                    <Link href="/feed?create=true" className={styles.createBtn}>Новый пост</Link>
                     <span className={styles.username}>{user.username}</span>
                     <button onClick={logout} className={styles.logoutBtn}>Выйти</button>
                 </>

@@ -5,8 +5,8 @@
 }
 
 .commentSection {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: #1E293B;
+  border: 1px solid #334155;
   border-radius: 8px;
   padding: 20px;
   margin-top: 20px;
@@ -15,7 +15,7 @@
 .commentTitle {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: #F1F5F9;
   margin-bottom: 16px;
 }
 
